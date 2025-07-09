@@ -18,4 +18,4 @@
 - Optimización de la experiencia de usuario en los filtros y la presentación de los juegos.
 
 ## Reflexión breve sobre la utilidad de la IA en este tipo de tareas
-La IA ayuda enormemente en tareas universitarias y en trabajos en general, permitiendo ahorrar tiempo, mejorar la calidad de los resultados y facilitar la resolución de problemas complejos de manera más eficiente.
+La inteligencia artificial se ha convertido en una herramienta fundamental para estudiantes y profesionales. Su capacidad para generar ideas, sugerir soluciones y automatizar tareas repetitivas permite ahorrar tiempo y enfocarse en aspectos más creativos o estratégicos del trabajo. Además, la IA ayuda a mejorar la calidad de los proyectos, ya que puede detectar errores, proponer mejoras y ofrecer ejemplos prácticos en tiempo real. En el contexto universitario, facilita el aprendizaje autónomo y la resolución de problemas complejos, haciendo que el proceso de desarrollo sea más eficiente y menos estresante. Sin duda, la integración de la IA en el flujo de trabajo representa una ventaja competitiva y una oportunidad para potenciar el crecimiento académico y profesional.
