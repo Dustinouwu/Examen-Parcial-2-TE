@@ -1,5 +1,140 @@
+:root {
+  --primary-color: #8a2be2;
+  --secondary-color: #2d2d2d;
+  --accent-color: #ffd23c;
+}
+
 .App {
+  text-align: left;
+  background-color: #f0f0f0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 1rem;
   text-align: center;
+  border-bottom: 8px solid var(--primary-color);
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+}
+
+.main-content {
+  display: flex;
+  padding: 2rem;
+  gap: 2rem;
+  flex: 1;
+}
+
+.filters {
+  width: 250px;
+  background-color: white;
+  padding: 2rem;
+  border: 4px solid var(--secondary-color);
+  box-shadow: 8px 8px 0 var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+}
+
+.filters h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+}
+
+.filters input,
+.filters select {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  padding: 0.8rem;
+  border: 3px solid var(--secondary-color);
+  font-family: 'Courier New', monospace;
+  border-radius: 0;
+}
+
+.filters input:last-child,
+.filters select:last-child {
+  margin-bottom: 0;
+}
+
+.games-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.game-card {
+  background-color: white;
+  border: 4px solid var(--secondary-color);
+  box-shadow: 8px 8px 0 var(--primary-color);
+  transition: transform 0.2s;
+  overflow: hidden;
+}
+
+.game-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0 var(--primary-color);
+}
+
+.game-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 4px solid var(--secondary-color);
+}
+
+.game-name {
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  margin: 1rem;
+  text-transform: uppercase;
+}
+
+.game-description {
+  margin: 1rem;
+  font-family: Arial, sans-serif;
+}
+
+.game-price {
+  margin: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.game-category {
+  display: inline-block;
+  margin: 0 1rem 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--accent-color);
+  border: 2px solid var(--secondary-color);
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+}
+
+.footer {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  border-top: 8px solid var(--primary-color);
+  font-family: 'Courier New', monospace;
 }
 
 .App-logo {
@@ -22,10 +157,2526 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  position: relative;
+  background-color: var(--primary-color);
+  overflow: hidden;
+  background: linear-gradient(
+    45deg,
+    var(--primary-color),
+    #5a189a
+  );
+}
+
+.App-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='6.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.3;
+  animation: grain 5s steps(10) infinite;
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) }
+  10% { transform: translate(-5%, -10%) rotate(-1deg) }
+  20% { transform: translate(-15%, 5%) rotate(1deg) }
+  30% { transform: translate(7%, -5%) rotate(-2deg) }
+  40% { transform: translate(-5%, 10%) rotate(2deg) }
+  50% { transform: translate(-15%, 5%) rotate(-1deg) }
+  60% { transform: translate(15%, 0) rotate(3deg) }
+  70% { transform: translate(0, 10%) rotate(-2deg) }
+  80% { transform: translate(3%, -5%) rotate(1deg) }
+  90% { transform: translate(-10%, 10%) rotate(-3deg) }
 }
 
 .App-link {
   color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.price-inputs {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.price-inputs input {
+  margin-bottom: 0;
+  width: 50%;
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  background-color: white;
+  border: 4px solid var(--secondary-color);
+  box-shadow: 8px 8px 0 var(--primary-color);
+}
+
+.no-results h3 {
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.8rem 1.2rem;
+  margin-top: 2rem;
+  width: 100%;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.filters-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.reset-button {
+  background-color: var(--accent-color);
+  border: 3px solid var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.reset-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 4px 4px 0 var(--secondary-color);
+  transform: translate(-2px, -2px);
+}
+
+.no-results p {
+  color: var(--secondary-color);
+  font-family: 'Courier New', monospace;
 }
 
 @keyframes App-logo-spin {
